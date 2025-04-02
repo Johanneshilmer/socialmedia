@@ -3,7 +3,6 @@
   color: #ededed;
 }
 
-
 .container {
   max-width: 1536px;
   margin-left: auto;
@@ -12,6 +11,19 @@
   padding-right: 0.5rem;
 
   border: red 1px solid;
+}
+
+/*-----------------------LOGIN--------------------------*/
+.login-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 2xl */

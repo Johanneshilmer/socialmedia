@@ -20,7 +20,7 @@ export default function page() {
             placeholder="Password"
             required
           />
-          <button type="submit">Login!!</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     </div>

@@ -1,7 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-export default function NavBar() {
+interface NavBarProps {
+  isLoggedIn: boolean;
+}
+
+export default function NavBar({ isLoggedIn }: NavBarProps) {
   return (
     <div className="container nav-bar">
       <div>
@@ -10,17 +14,22 @@ export default function NavBar() {
         </Link>
       </div>
       <div>
-        <Link href="/login">
-          <span>Login</span>
-        </Link>
-
-        <Link href="/login">
-          <span>Register</span>
-        </Link>
-
-        <Link href="/">
-          <span>Logout</span>
-        </Link>
+        {!isLoggedIn ? (
+          <>
+            <Link href="/login">
+              <span>Login</span>
+            </Link>
+            <Link href="/login">
+              <span>Register</span>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="/logout">
+              <span>Logout</span>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

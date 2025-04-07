@@ -18,6 +18,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.5rem 0.5rem;
+}
+
+.nav-bar span {
+  padding: 1rem;
+  background-color: #ededed;
+  color: #0a0a0a;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.nav-bar a {
+  text-decoration: none;
 }
 
 /*-----------------------LOGIN--------------------------*/

@@ -1,11 +1,11 @@
 "use client";
 import NavBar from "./components/NavBar";
 import List from "./components/List";
-import useState from "react";
 import React from "react";
+import { prisma } from "@/lib/prisma";
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false); // Slänger in sen
   return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} />

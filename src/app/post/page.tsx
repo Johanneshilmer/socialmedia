@@ -10,7 +10,7 @@ export default function page() {
           <h1>Create A Post</h1>
         </div>
         <div className="container">
-          <form action="/api/post" method="POST">
+          <form action="/api/posts" method="POST">
             <textarea name="content" placeholder="Content" required></textarea>
             <button type="submit">Create Post</button>
           </form>

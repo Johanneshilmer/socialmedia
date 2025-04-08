@@ -1,21 +1,56 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 
 export default function page() {
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }),
+    });
+
+    if (res.ok) {
+      alert("Inlägg skapat!");
+      setTitle("");
+      setContent("");
+    } else {
+      alert("Något gick fel.");
+    }
+  }
+
   return (
     <>
       <NavBar />
-      <div>
-        <div className="container">
-          <h1>Create A Post</h1>
+      <form onSubmit={handleSubmit} className="container">
+        <div>
+          <label className="block">Titel</label>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border p-1 w-full"
+          />
         </div>
-        <div className="container">
-          <form action="/api/posts" method="POST">
-            <textarea name="content" placeholder="Content" required></textarea>
-            <button type="submit">Create Post</button>
-          </form>
+        <div>
+          <label className="block">Innehåll</label>
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="border p-1 w-full"
+          />
         </div>
-      </div>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Skapa Inlägg
+        </button>
+      </form>
     </>
   );
 }

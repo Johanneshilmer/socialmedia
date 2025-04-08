@@ -8,3 +8,6 @@ export const prisma =
   globalForPrisma.prisma ?? new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+
+// Lägg till logg för att bekräfta att Prisma-klienten instansieras korrekt
+console.log('Prisma Client:', prisma);

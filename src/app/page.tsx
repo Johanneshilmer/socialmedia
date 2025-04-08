@@ -6,6 +6,9 @@ import { prisma } from "@/lib/prisma";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false); // Slänger in sen
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [error, setError] = React.useState<string | null>(null);
+
   return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} />

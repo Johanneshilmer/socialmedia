@@ -19,7 +19,7 @@ export default function NavBar({ isLoggedIn }: NavBarProps) {
             <Link href="/login">
               <span>Login</span>
             </Link>
-            <Link href="/login">
+            <Link href="/register">
               <span>Register</span>
             </Link>
           </>

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import React from "react";
+import "./List.css";
 // Typdefinition för Post
 type Post = {
   id: number;
@@ -33,12 +34,20 @@ export default function List() {
     <div>
       <h1 className="text-2xl mb-4">Inlägg</h1>
       {posts.length > 0 ? (
-        <ul>
+        <ul className="posts-list">
           {posts.map((post) => (
-            <li key={post.id} className="border-b p-4">
-              <h2 className="font-bold">{post.title}</h2>
-              <p>{post.content}</p>
-              <small>{new Date(post.createdAt).toLocaleString()}</small>
+            <li key={post.id} className="container post-main">
+              <div className="post-header">
+                <div className="post-title">
+                  <span className="font-bold">{post.title}</span>
+                </div>
+                <div className="post-time">
+                  <span>{new Date(post.createdAt).toLocaleString()}</span>
+                </div>
+              </div>
+              <div className="post-content">
+                <p>{post.content}</p>
+              </div>
             </li>
           ))}
         </ul>

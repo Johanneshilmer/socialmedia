@@ -6,7 +6,7 @@ export default function page() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmitPost(e: React.FormEvent) {
     e.preventDefault();
 
     const res = await fetch("/api/posts", {
@@ -27,7 +27,7 @@ export default function page() {
   return (
     <>
       <NavBar />
-      <form onSubmit={handleSubmit} className="container">
+      <form onSubmit={handleSubmitPost} className="container">
         <div>
           <label className="block">Titel</label>
           <input

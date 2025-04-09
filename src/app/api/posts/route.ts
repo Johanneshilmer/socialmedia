@@ -1,20 +1,19 @@
-import {prisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
     const posts = await prisma.post.findMany();
     return NextResponse.json(posts);
-
   } catch (error) {
     console.error('Error fetching posts:', error);
     return NextResponse.json({ error: 'Något gick fel vid hämtning av inlägg' }, { status: 500 });
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const { title, content } = await req.json();
+    const { title, content } = await request.json();
     
     // Kontrollera om både titel och innehåll finns
     if (!title || !content) {

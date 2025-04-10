@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import React from "react";
 import "./List.css";
+import ButtonLink from "./ButtonLink";
+import { log } from "console";
 // Typdefinition för Post
 type Post = {
   id: number;
@@ -33,6 +35,7 @@ export default function List() {
   return (
     <div>
       <h1 className="text-2xl mb-4">Inlägg</h1>
+      <ButtonLink text="Create New Post" link="/post" />
       {posts.length > 0 ? (
         <ul className="posts-list">
           {posts.map((post) => (

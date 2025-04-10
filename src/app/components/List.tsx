@@ -34,8 +34,14 @@ export default function List() {
 
   return (
     <div>
-      <h1 className="text-2xl mb-4">Inlägg</h1>
-      <ButtonLink text="Create New Post" link="/post" />
+      <div className="list-header">
+        <div>
+          <h1 className="text-2xl mb-4">Inlägg</h1>
+        </div>
+        <div>
+          <ButtonLink text="Create New Post" link="/post" />
+        </div>
+      </div>
       {posts.length > 0 ? (
         <ul className="posts-list">
           {posts.map((post) => (

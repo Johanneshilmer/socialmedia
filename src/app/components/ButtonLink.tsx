@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
+import "./ButtonLink.css";
 
 interface ButtonLinkProps {
   text: string;
@@ -13,5 +14,9 @@ export default function ButtonLink({ text, link }: ButtonLinkProps) {
     router.push(link);
   };
 
-  return <button onClick={handleClick}>{text}</button>;
+  return (
+    <button className="link-button" onClick={handleClick}>
+      {text}
+    </button>
+  );
 }

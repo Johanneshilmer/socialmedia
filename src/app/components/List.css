@@ -1,3 +1,10 @@
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
 .posts-list {
   display: block;
   column-gap: 20px;

@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
+import { useRouter } from "next/navigation";
 
 export default function page() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const router = useRouter();
 
   async function handleSubmitPost(e: React.FormEvent) {
     e.preventDefault();
@@ -16,9 +18,7 @@ export default function page() {
     });
 
     if (res.ok) {
-      alert("Inlägg skapat!");
-      setTitle("");
-      setContent("");
+      router.push("/");
     } else {
       alert("Något gick fel.");
     }

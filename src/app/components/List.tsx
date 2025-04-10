@@ -11,7 +11,11 @@ type Post = {
   createdAt: string;
 };
 
-export default function List() {
+interface PostProps {
+  isLoggedIn: boolean;
+}
+
+export default function List({ isLoggedIn }: PostProps) {
   const [posts, setPosts] = React.useState<Post[]>([]);
   const fetchPosts = async () => {
     try {
@@ -39,7 +43,7 @@ export default function List() {
           <h1 className="text-2xl mb-4">Inlägg</h1>
         </div>
         <div>
-          <ButtonLink text="Create New Post" link="/post" />
+          {isLoggedIn && <ButtonLink text="Create New Post" link="/post" />}
         </div>
       </div>
       {posts.length > 0 ? (

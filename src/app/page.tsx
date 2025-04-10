@@ -16,7 +16,7 @@ export default function Home() {
         <h1>Welcome to the Home Page</h1>
       </div>
       <div className="container">
-        <List />
+        <List isLoggedIn={isLoggedIn} />
       </div>
     </div>
   );

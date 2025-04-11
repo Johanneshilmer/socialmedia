@@ -48,21 +48,23 @@ export default function List({ isLoggedIn }: PostProps) {
       </div>
       {posts.length > 0 ? (
         <ul className="posts-list">
-          {posts.map((post) => (
-            <li key={post.id} className="container post-main">
-              <div className="post-header">
-                <div className="post-title">
-                  <span className="font-bold">{post.title}</span>
+          {posts
+            .map((post) => (
+              <li key={post.id} className="container post-main">
+                <div className="post-header">
+                  <div className="post-title">
+                    <span className="font-bold">{post.title}</span>
+                  </div>
+                  <div className="post-time">
+                    <span>{new Date(post.createdAt).toLocaleString()}</span>
+                  </div>
                 </div>
-                <div className="post-time">
-                  <span>{new Date(post.createdAt).toLocaleString()}</span>
+                <div className="post-content">
+                  <p>{post.content}</p>
                 </div>
-              </div>
-              <div className="post-content">
-                <p>{post.content}</p>
-              </div>
-            </li>
-          ))}
+              </li>
+            ))
+            .reverse()}
         </ul>
       ) : (
         <p>Inga inlägg tillgängliga.</p>

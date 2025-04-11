@@ -1,37 +1,47 @@
+"use client";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import NavBar from "../components/NavBar";
 
 export default function page() {
+  const [username, setUsername] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const res = await signIn("credentials", {
+      username,
+      password,
+      redirect: false,
+    });
+
+    if (res?.ok) {
+      router.push("/");
+    } else {
+      alert("Fel användarnamn eller lösenord");
+    }
+  };
+
   return (
     <>
-      <NavBar />
-      <div className="login-main">
-        <div className="login-form">
-          <div className="container login-header">
-            <h1>Login</h1>
-          </div>
-
-          <form
-            action="/api/login"
-            method="POST"
-            className="container login-inputs"
-          >
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">Login</button>
-          </form>
-        </div>
-      </div>
+      <NavBar isLoggedIn />
+      <form onSubmit={handleLogin} className="container">
+        <input
+          type="text"
+          placeholder="Användarnamn"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Lösenord"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Logga in</button>
+      </form>
     </>
   );
 }

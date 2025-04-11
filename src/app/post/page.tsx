@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function page() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const router = useRouter();
+  const router = Link();
 
   async function handleSubmitPost(e: React.FormEvent) {
     e.preventDefault();

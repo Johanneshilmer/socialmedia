@@ -31,7 +31,6 @@ export default function List({ isLoggedIn }: PostProps) {
     }
   };
 
-  // Anropa fetchPosts när komponenten laddas
   useEffect(() => {
     fetchPosts();
   }, []);

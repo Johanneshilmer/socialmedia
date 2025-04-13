@@ -12,7 +12,6 @@ export const authOptions = {
       async authorize(credentials, req) {
         // Simpel hårdkodad användare (för test)
         const user = { id: "1", name: "Johannes", username: "admin", password: "1234" };
-
         if (
           credentials?.username === user.username &&
           credentials?.password === user.password

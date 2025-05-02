@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} />
+      <h1>hek</h1>
       <div className="container">
         <h1>Welcome to the Home Page</h1>
       </div>

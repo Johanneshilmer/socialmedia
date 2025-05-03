@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import style from "./NavBar.module.css";
+import { signOut } from "next-auth/react";
 
 export default function NavBar() {
   return (
@@ -9,14 +11,10 @@ export default function NavBar() {
           My Logo
         </a>
       </div>
-      <div className={style.navbar_mid}>
+      <div className={style.navbar_right}>
         <a href="/posts">Posts</a>
         <a href="/">New Post</a>
-      </div>
-      <div className={style.navbar_right}>
-        <a href="/">Register</a>
-        <a href="/">Login</a>
-        <a href="/">Logout</a>
+        <a onClick={() => signOut({ callbackUrl: "/" })}>Logout</a>
       </div>
     </div>
   );

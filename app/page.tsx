@@ -2,14 +2,11 @@
 import { useSession } from "next-auth/react";
 import { signIn, signOut, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
+import NavBar from "./components/NavBar";
 
 export default function Home() {
   const { data: session, status } = useSession();
   const [providers, setProviders] = useState(null);
-
-  if (status === "loading") {
-    return <p>Loading...</p>;
-  }
 
   useEffect(() => {
     const fetchProviders = async () => {
@@ -24,28 +21,35 @@ export default function Home() {
     fetchProviders();
   }, []);
 
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div>
-      {session ? (
-        <>
-          <h1>Welcome, {session.user?.name}</h1>
-          <button onClick={() => signOut()}>Sign Out</button>
-        </>
-      ) : (
-        <>
-          <div>
-            <h1>Sign In</h1>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <div key={provider.name} style={{ margin: "10px" }}>
-                  <button onClick={() => signIn(provider.id)}>
-                    Sign in with {provider.name}
-                  </button>
-                </div>
-              ))}
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <NavBar />
+      <div>
+        {session ? (
+          <>
+            <h1>Welcome, {session.user?.name}</h1>
+            <button onClick={() => signOut()}>Sign Out</button>
+          </>
+        ) : (
+          <>
+            <div>
+              <h1>Sign In</h1>
+              {providers &&
+                Object.values(providers).map((provider) => (
+                  <div key={provider.name} style={{ margin: "10px" }}>
+                    <button onClick={() => signIn(provider.id)}>
+                      Sign in with {provider.name}
+                    </button>
+                  </div>
+                ))}
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }
